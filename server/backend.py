@@ -2,6 +2,14 @@ from fastapi import FastAPI
 app = FastAPI()
 from pydantic import BaseModel  #Base class for any class whose objects are used as input to a http request
 from fastapi.middleware.cors import CORSMiddleware
+from datetime import date
+from typing import Dict
+
+# storage history list:
+    # [0] = date started
+    # [1] = liquid nitrogen tank number
+    # [2] = box number
+    # [3] slot number
 
 origins = ["*"]
 
@@ -20,17 +28,33 @@ cellLines = {}
 async def root():
     return cellLines
 
+class StorageInfo(BaseModel):
+    dateStarted: str
+    tankNum: int
+    boxNum: int
+    slotNum: int
+
+class Passage(BaseModel):
+    imagePath: str
+    viability: float
+    concentration: float
+    size: float
+    seededCells: float
+    flaskSize: str # T25, T75, T175
+    date: str
+
 #create a class for a message item and a name
 class CellLine(BaseModel):
     id: str
     name: str
     passageNum: int
+    storageHistory: StorageInfo
+    passages: Dict[int, Passage]
 
 class Name(BaseModel):
     name: str
 
-#allow users to add a message by going to the post endpoint, takes in
-# an object of the Item class
+# Add a new cell line
 @app.post('/addLine')
 async def add_item(cellLine: CellLine):
     cellLines[cellLine.id] = cellLine

@@ -6,6 +6,7 @@ import './App.css'
 import CellLine from './components/CellLine'
 
 function App() {
+  const [window, setWindow] = useState(0) // 0: dashboard , 1: cell line options
   const [cellLines, setCellLines] = useState({})
 
   const fetchMessages = async () => {
@@ -18,13 +19,20 @@ function App() {
       fetchMessages()
   }, [])
 
-  return (
+  return (window == 0) ? (
     <>
       <div className="cellLineWrapper">
         <h1>Choose a Cell Line</h1>
         {Object.keys(cellLines).map((id) => (
-          <CellLine cellLine={cellLines[id]}></CellLine>
+          <CellLine cellLine={cellLines[id]} setWindow = {setWindow}></CellLine>
         ))}
+      </div>
+    </>
+  ) : 
+  (
+    <>
+      <div>
+        <h1>Hello</h1>
       </div>
     </>
   )
