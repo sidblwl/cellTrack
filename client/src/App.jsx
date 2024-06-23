@@ -4,9 +4,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import CellLine from './components/CellLine'
+import Test from './components/Test'
+import LineInfo from './components/LineInfo.jsx'
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [window, setWindow] = useState(0) // 0: dashboard , 1: cell line options
   const [cellLines, setCellLines] = useState({})
 
   const fetchMessages = async () => {
@@ -19,21 +21,18 @@ function App() {
       fetchMessages()
   }, [])
 
-  return (window == 0) ? (
+  return (
     <>
-      <div className="cellLineWrapper">
+      {/* <div className="cellLineWrapper">
         <h1>Choose a Cell Line</h1>
         {Object.keys(cellLines).map((id) => (
-          <CellLine cellLine={cellLines[id]} setWindow = {setWindow}></CellLine>
+          <CellLine cellLine={cellLines[id]}></CellLine>
         ))}
-      </div>
-    </>
-  ) : 
-  (
-    <>
-      <div>
-        <h1>Hello</h1>
-      </div>
+      </div> */}
+      <Routes>
+        <Route path="/" element={<Test />} />
+        <Route path="/info" element={<LineInfo />} />
+      </Routes>
     </>
   )
 }
