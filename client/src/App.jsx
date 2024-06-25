@@ -5,7 +5,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import CellLine from './components/CellLine'
 import LineInfo from './components/LineInfo.jsx'
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 
 function App() {
 
@@ -18,12 +18,17 @@ function App() {
   // useEffect(() => {
   //     fetchMessages()
   // }, [])
+  const { line } = useParams()
+  // useEffect(() => {
+
+  // })
 
   return (
     <>
       <Routes>
         <Route path="/" element={<CellLine />} />
-        <Route path="/lineinfo" element={<LineInfo />} />
+        <Route path=":line" element={<LineInfo />} />
+        {/* https://ui.dev/react-router-url-parameters */}
       </Routes>
     </>
   )
