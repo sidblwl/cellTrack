@@ -1,22 +1,21 @@
 import '../App.css'
 import React, { useState, useEffect } from "react";
-// import { useState } from 'react'
-// import { useEffect } from 'react'
+import { Routes, Route, useParams, Link } from "react-router-dom";
 
-export function CellLine({cellLine}){
+function CellLine({cellLine}){
     return (
         <>
-        <div className="cellLine">
+        <Link to={`info/${cellLine.id}`} className={"lineLink"}>
             <h1>{cellLine.id}</h1>
-            <h1>{cellLine.name}</h1>
+            <h1 className="cellName">{cellLine.name}</h1>
             <h1>{cellLine.passageNum}</h1>
-        </div>
+        </Link>
         </>
 
     )
 }
 
-export default function cellLineWrapper(){
+export default function CellLineWrapper(){
     const [cellLines, setCellLines] = useState({})
 
     const fetchMessages = async () => {
