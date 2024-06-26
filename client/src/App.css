@@ -1,47 +1,108 @@
-.cellLineWrapper{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.cellLineWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px; /* Material Design recommends 8dp or 16dp for padding */
+  }
+  
+  .lineLink {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: #f5f5f5; /* Using a light background color from Material Design palette */
+    width: 50%;
+    padding: 16px; /* Increased padding for better spacing */
+    border-radius: 8px; /* Material Design suggests 4dp or 8dp for rounded corners */
+    margin-bottom: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+    transition: background-color 0.3s; /* Smooth transition for interactive elements */
+  }
+  
+  .lineLink:hover {
+    background-color: #e0e0e0; /* Slightly darker background on hover */
+  }
+  
+  .cellName {
+    grid-column: span 3;
+  }
+  
+  .lineLink > h1 {
+    color: rgba(0, 0, 0, 0.87); /* Using primary text color from Material Design */
+    margin: 15px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif; /* Material Design font */
+    font-weight: 400; /* Regular weight */
+  }
+  
+  .addCellLine {
+    background-color: #f5f5f5;
+    width: 50%;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+  }
+  
+  .addCellLine:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .addCellLine > h1 {
+    color: rgba(0, 0, 0, 0.87);
+    margin: 15px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 8;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: bold;
 }
 
-.lineLink{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  background-color: beige;
-  width: 50%;
-  padding-left: 15px;
-  padding-right: 15px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  text-decoration: none;
-  font-size: 20px;
+.material-h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem; /* Adjust size as per your design */
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01562em;
+    color: #212121; /* Primary text color */
+    margin: 0.67em 0;
+    text-decoration: none;
 }
 
-.cellName{
-  grid-column: span 3;
+.material-input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    padding: 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 30%;
 }
 
-.lineLink > h1{
-  color: black;
-  margin: 15px;
-  /* border: 1px solid red; */
-  text-align: center
+.material-input:focus {
+    border-color: #6200ea; /* Accent color */
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(98, 0, 234, 0.2);
 }
 
-.addCellLine{
-  background-color: beige;
-  width: 50%;
-  padding-left: 15px;
-  padding-right: 15px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  text-decoration: none;
-  font-size: 20px;
-}
 
-.addCellLine > h1{
-  color: black;
-  margin: 15px;
-  /* border: 1px solid red; */
-  text-align: center
+
+.modern-button {
+    background-color: #1976d2; /* Use your preferred primary color */
+    color: #ffffff; /* White text color */
+}
+  
+.modern-button:hover {
+    background-color: #1565c0; /* Darker shade on hover */
 }

@@ -1,0 +1,47 @@
+.cellLineWrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lineLink{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: beige;
+  width: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.cellName{
+  grid-column: span 3;
+}
+
+.lineLink > h1{
+  color: black;
+  margin: 15px;
+  /* border: 1px solid red; */
+  text-align: center
+}
+
+.addCellLine{
+  background-color: beige;
+  width: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.addCellLine > h1{
+  color: black;
+  margin: 15px;
+  /* border: 1px solid red; */
+  text-align: center
+}
