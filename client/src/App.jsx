@@ -14,7 +14,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<CellLineWrapper/>} />
-        <Route path="info/:id" element={<LineInfo/>} />
+        <Route path=":id" element={<LineInfo/>} />
         <Route path="create" element={<CreateLine/>} />
       </Routes>
     </>

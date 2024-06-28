@@ -2,39 +2,47 @@ import '../App.css'
 import { Routes, Route, useParams, Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
+function PassageHeadings(){
+    return (
+        <>
+            <p>Date</p>
+            <p>Passage</p>
+            <p>Viability</p>
+            <p>Concentration</p>
+            <p>Size</p>
+            <p>Seeded Cells</p>
+        </>
+    )
+}
+
 function Passage({passage, num}){
     return (
         <>
-            <div>
-                <h1>{num}</h1>
-                <h1>{passage.viability}</h1>
-                <h1>{passage.concentration}</h1>
-                <h1>{passage.size}</h1>
-                <h1>{passage.seededCells}</h1>
-            </div>
+            <p>06/26/24</p>
+            <p>{num}</p>
+            <p>{passage.viability}%</p>
+            <p>{passage.concentration}</p>
+            <p>{passage.size}</p>
+            <p>{passage.seededCells}</p>
         </>
     )
 }
 
 export default function LineInfo(){
     const { id } = useParams();
-    const [cellLines, setCellLines] = useState({
-        [id]: {
+    const [cell, setCell] = useState([
+        {
             "id": "loading",
             "name": "loading",
             "passageNum": "loading"
         }
-    })
-
-    console.log(cellLines)
+    ])
 
     const fetchMessages = async () => {
-        const response = await fetch("http://127.0.0.1:8000/getLines")
+        const response = await fetch("http://127.0.0.1:8000/" + id)
         let responseJson = await response.json()
-        setCellLines(responseJson);
+        setCell(responseJson["data"][0]);
     }
-
-    console.log(cellLines)
     
     useEffect(() => {
         fetchMessages()
@@ -42,14 +50,17 @@ export default function LineInfo(){
 
     return (
         <>
-            <h1>{cellLines[id].name}</h1>
-            <h1>Cell ID: {id}</h1>
-            <h1>P{cellLines[id].passageNum}</h1>
+        <div className="lineInfoWrapper">
+            <h1>{cell.name}</h1>
+            <h1>Cell ID: {cell.id}</h1>
+            <h1>P{cell.passageNum}</h1>
             <div className="passagesWrapper">
-                {/* {Object.keys(cellLines[id].passages).map((num) => (
-                    <Passage passage={cellLines[id].passages[num]} num={num}></Passage>
-                ))} */}
+                <PassageHeadings></PassageHeadings>
+                {cell.passages ? (Object.keys(cell.passages).map((num) => (
+                    <Passage passage={cell.passages[num]} num={num}></Passage>
+                ))) : ""}
             </div>
+        </div>
         </>
     )
 }
