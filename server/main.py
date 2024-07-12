@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from routes import cellTrack_api_router
 from fastapi.middleware.cors import CORSMiddleware
+import certifi
+print(certifi.where())
 
 app = FastAPI() # initialize FastAPI
 app.include_router(cellTrack_api_router) # include the router
